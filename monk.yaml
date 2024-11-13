@@ -1,0 +1,34 @@
+namespace: kestra
+
+postgres:
+  defines: runnable
+  inherits: postgresql/db
+  metadata:
+    name: postgres
+    description: PostgreSQL database service required by Kestra for data storage.
+    icon: https://www.postgresql.org/media/img/about/press/elephant.png
+  variables:
+    db_name:
+      type: string
+      value: monk
+      description: ''
+    db_pass:
+      type: string
+      value: adminpassword
+      description: ''
+    db_user:
+      type: string
+      value: monk
+      description: ''
+
+stack:
+  defines: group
+  members:
+    - kestra/postgres
+  metadata:
+    name: Kestra
+    description: >-
+      Kestra is an open-source, event-driven orchestration platform that
+      simplifies the creation and management of both scheduled and event-driven
+      workflows using YAML.
+    icon: https://avatars.githubusercontent.com/u/63684037?s=200&v=4
